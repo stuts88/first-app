@@ -3,23 +3,18 @@ import { Component } from "@angular/core";
 @Component({
   selector: "app-server",
   templateUrl: "./server.component.html"
+  styles: [`
+    .online {
+      background-color : green;
+    }
+    `]
 })
 export class ServerComponent {
   serverId = 10;
   serverStatus = "offline";
-  allowNewServer = false;
-  newServerStatus = "No new server created";
-  serverName = "Start Server";
-  username = "";
+  serverName = "Server Name";
 
   constructor() {
-    setTimeout(() => {
-      this.allowNewServer = true;
-    }, 2000);
+    this.serverStatus = Math.random() > 0.5 ? 'online' : 'offline';
   }
-
-  onCreateServer() {
-    this.newServerStatus = "New server with name - "  + this.serverName + " successfully";
-  }
-
 }
